@@ -23,7 +23,7 @@ plot(x1,autocorrelated_signal');
 
 % The fundamental frequency can be seen from the second maximum, which
 % indicates the period of the fundamental frequency. Visually the second
-% maximum is approximately at 0.002 seconds, which would mean that the
+% maximum is approximately at 0.005 seconds, which would mean that the
 % fundmental frequency would be 
 
 % Let's find the mean value for the period
