@@ -26,13 +26,14 @@ plot(x1,autocorrelated_signal');
 % maximum is approximately at 0.002 seconds, which would mean that the
 % fundmental frequency would be 
 
-pks = findpeaks(y);
+% Let's find the mean value for the period
+findpeaks(autocorrelated_signal,Fs,'MinPeakDistance',0.005);
 
+[peak,location] = findpeaks(autocorrelated_signal,Fs,'MinPeakDistance',0.005);
+meanPeriod = mean(diff(location));
 
+meanFre = round(1/meanPeriod);
+fprintf('The mean fundamental frequency is %d Hz', meanFre);
 
-% Let's plot matlab's implementation for reference
-%subplot(2,1,2);
-%x2 = linspace(0,size(y,1)/Fs,size(y,1)*2-1);
-%plot(x2, r');
-
+% The mean fundamental frequency is around 125 Hz, so it is a male voice.
 
