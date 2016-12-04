@@ -10,11 +10,11 @@ r_ss = zeros(max_time_lag,1);
 % max_time_lag in number of samples
 for tau=1:max_time_lag
     sum = 0;
-    for k=1+tau:size(signal) - max_time_lag
+    for k=1+tau:size(signal)
         sum = sum + signal(k) * signal (k-tau);
     end
     
-    r_ss(tau) = (1/max_time_lag) * sum; 
+    r_ss(tau) = (1/size(signal,1)) * sum; 
 end
 
 end

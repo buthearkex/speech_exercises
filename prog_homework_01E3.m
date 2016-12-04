@@ -5,7 +5,7 @@ clc; %clears the command window
 [y, Fs] = audioread('13ZZ637A.wav');
 
 % use the unvoivoi function to detect voiced and unvoiced speech segments
-voiced_parts = unvoivoi(y,25e-3*Fs,0.005,0.95); % not sure what the threshold values shold be
+voiced_parts = unvoivoi(y,0.1*Fs,0.005,0.95); % not sure what the threshold values shold be
 
 % Multiply the result of the unvoivoi function with your speech data 
 % to set unvoiced parts to zero
@@ -40,12 +40,20 @@ samples_in_100ms = Fs * 0.1;
 % divide signal into 25ms pieces
 amount_of_sliding_windows = floor(size(y)/samples_in_25ms);
 
-x2 = linspace(0,size(y)/Fs, amount_of_sliding_windows);
-
-pitch_contour = zeros(amount_of_sliding_windows);
-
-for i = 1:size(y):samples_in_25ms
-    pitch_contour(i) = autocorrelation2(signal(i:end), samples_in_100ms);
-end
+%x2 = linspace(0,10, 10);
 
 % Create a fundamental frequency vector and plot your pitch contour
+% Calculating the autocorrelation of signal with window size 100ms with a shift of 25ms
+pitch_contour = zeros(amount_of_sliding_windows(1));
+count = 1;
+for i = 1:samples_in_25ms : size(voiced_signal,1)
+    if (i + samples_in_100ms) <= size(voiced_signal,1)
+    autocorrelated_signal = autocorrelation2(voiced_signal(i:i+samples_in_100ms), samples_in_100ms); 
+    [peak,location] = findpeaks(autocorrelated_signal,Fs,'MinPeakDistance',0.005);
+    meanPeriod = mean(diff(location));
+    pitch_contour(count) = 1/meanPeriod;
+    count = count+1;
+    end
+end
+figure();
+plot(pitch_contour);
