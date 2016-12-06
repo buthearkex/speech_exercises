@@ -10,7 +10,7 @@ clc; %clears the command window
 nbr_samples_in_hundred_ms = Fs * 0.1;
 
 % Let's calculate ACF
-autocorrelated_signal = autocorrelation2(y,nbr_samples_in_hundred_ms);
+autocorrelated_signal = autocorrelation(y,nbr_samples_in_hundred_ms);
 
 % Matlab implementation for reference
 %r = xcorr(y, y);
@@ -23,8 +23,8 @@ plot(x1,autocorrelated_signal');
 
 % The fundamental frequency can be seen from the second maximum, which
 % indicates the period of the fundamental frequency. Visually the second
-% maximum is approximately at 0.005 seconds, which would mean that the
-% fundmental frequency would be 
+% maximum is approximately at 0.008 seconds, which would mean that the
+% fundmental frequency would be 125 Hz.
 
 % Let's find the mean value for the period
 findpeaks(autocorrelated_signal,Fs,'MinPeakDistance',0.005);

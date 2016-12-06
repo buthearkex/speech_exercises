@@ -1,4 +1,4 @@
-function [ r_ss ] = autocorrelation2( signal, max_time_lag )
+function [ r_ss ] = autocorrelation( signal, max_time_lag )
 %AUTOCORRELATION  Computes the ACF.
 %   The ACF is computed for all time shifts from 0 until max_time_lag. 
 %   max_time_lag defines the maximum shift of the signal in samples (100
