@@ -1,6 +1,6 @@
 % Speech Communication WS2016/WS2017
 % Programming Homework I
-% Sudarson Selvaraj - 123456
+% Sudarson Selvaraj - 0387649
 % Mikko Honkanen - 0387608
 
 function [ r_ss ] = autocorrelation( signal, max_time_lag )

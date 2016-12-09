@@ -1,6 +1,6 @@
 % Speech Communication WS2016/WS2017
 % Programming Homework I
-% Sudarson Selvaraj - 123456
+% Sudarson Selvaraj - 0387649
 % Mikko Honkanen - 0387608
 
 
@@ -26,7 +26,7 @@ plot(x1,autocorrelated_signal');
 % The fundamental frequency can be seen from the second maximum, which
 % indicates the period of the fundamental frequency. Visually the second
 % maximum is approximately at 0.008 seconds, which would mean that the
-% fundmental frequency would be 125 Hz.
+% fundmental frequency would be 122 Hz.
 
 % Let's draw the graph with the maxima marked.
 % We use 0.007 seconds as minPeakDistance, since it correlates to around
