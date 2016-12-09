@@ -26,7 +26,9 @@ last_unvoiced = 1;
 first_unvoiced = 1;
 
 hold on;
-
+xlabel('Time in seconds');
+ylabel('Amplitude');
+title('Original Signal + voiced segments');
 plot(x,y, 'color', 'r');
 plot(x,voiced_signal,'color','b');
 
@@ -86,4 +88,9 @@ end
 % plot the pitch contour
 figure();
 x2 = linspace(0,sound_length,amount_of_sliding_windows(1));
+hold on;
+xlabel('Time');
+ylabel('Frequency');
+title('Pitch Contour');
 plot(x2,pitch_contour);
+hold off;
