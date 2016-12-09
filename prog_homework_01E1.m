@@ -1,3 +1,9 @@
+% Speech Communication WS2016/WS2017
+% Programming Homework I
+% Sudarson Selvaraj - 123456
+% Mikko Honkanen - 0387608
+
+
 clear variables; %deletes all variables in the workspace
 close all; %closes all plots
 clc; %clears the command window
@@ -9,23 +15,12 @@ clc; %clears the command window
 % Let's calculate samples 100 ms
 nbr_samples_in_hundred_ms = Fs * 0.1;
 
-% voiced_parts = unvoivoi(y,0.1*Fs,0.005,0.95); % not sure what the threshold values shold be
-% 
-% % Multiply the result of the unvoivoi function with your speech data 
-% % to set unvoiced parts to zero
-% voiced_signal = y.* voiced_parts;
-
-
 % Let's calculate ACF
-autocorrelated_signal = autocorrelation(y,nbr_samples_in_hundred_ms);%y,nbr_samples_in_hundred_ms);
-
-% Matlab implementation for reference
-%r = xcorr(y, y);
+autocorrelated_signal = autocorrelation(y,nbr_samples_in_hundred_ms);
 
 % Let's plot the autocorreltaed signal
 x1 = linspace(0,0.1,nbr_samples_in_hundred_ms);
 figure();
-%subplot(2,1,1);
 plot(x1,autocorrelated_signal');
 
 % The fundamental frequency can be seen from the second maximum, which
@@ -33,15 +28,18 @@ plot(x1,autocorrelated_signal');
 % maximum is approximately at 0.008 seconds, which would mean that the
 % fundmental frequency would be 125 Hz.
 
-% Let's find the mean value for the period
+% Let's draw the graph with the maxima marked.
+% We use 0.007 seconds as minPeakDistance, since it correlates to around
+% 140Hz, which is close to the upper limit of the fundamental frequency of
+% the male voice.
 findpeaks(autocorrelated_signal,x1,'MinPeakDistance',0.007);
 
+% calculate the average 
 [peak,location] = findpeaks(autocorrelated_signal,x1,'MinPeakDistance',0.007);
 meanPeriod = mean(diff(location));
-% accomodate for NaN here
 
 meanFre = round(1/meanPeriod);
 fprintf('The mean fundamental frequency is %d Hz', meanFre);
 
-% The mean fundamental frequency is around 125 Hz, so it is a male voice.
+% The mean fundamental frequency is around 122 Hz, so it is a male voice.
 
