@@ -9,8 +9,15 @@ clc; %clears the command window
 % Let's calculate samples 100 ms
 nbr_samples_in_hundred_ms = Fs * 0.1;
 
+% voiced_parts = unvoivoi(y,0.1*Fs,0.005,0.95); % not sure what the threshold values shold be
+% 
+% % Multiply the result of the unvoivoi function with your speech data 
+% % to set unvoiced parts to zero
+% voiced_signal = y.* voiced_parts;
+
+
 % Let's calculate ACF
-autocorrelated_signal = autocorrelation(y,nbr_samples_in_hundred_ms);
+autocorrelated_signal = autocorrelation(y,nbr_samples_in_hundred_ms);%y,nbr_samples_in_hundred_ms);
 
 % Matlab implementation for reference
 %r = xcorr(y, y);
@@ -27,10 +34,11 @@ plot(x1,autocorrelated_signal');
 % fundmental frequency would be 125 Hz.
 
 % Let's find the mean value for the period
-findpeaks(autocorrelated_signal,Fs,'MinPeakDistance',0.005);
+findpeaks(autocorrelated_signal,x1,'MinPeakDistance',0.007);
 
-[peak,location] = findpeaks(autocorrelated_signal,Fs,'MinPeakDistance',0.005);
+[peak,location] = findpeaks(autocorrelated_signal,x1,'MinPeakDistance',0.007);
 meanPeriod = mean(diff(location));
+% accomodate for NaN here
 
 meanFre = round(1/meanPeriod);
 fprintf('The mean fundamental frequency is %d Hz', meanFre);
