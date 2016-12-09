@@ -21,12 +21,10 @@ autocorrelated_signal = autocorrelation(y,nbr_samples_in_hundred_ms);
 % Let's plot the autocorreltaed signal
 figure();
 x1 = linspace(0,0.1,nbr_samples_in_hundred_ms);
-hold on;
+plot(x1,autocorrelated_signal');
 xlabel('τ in seconds');
 ylabel('r_ss');
 title('ACF');
-plot(x1,autocorrelated_signal');
-hold off;
 
 % The fundamental frequency can be seen from the second maximum, which
 % indicates the period of the fundamental frequency. Visually the second
