@@ -8,10 +8,10 @@ close all; %closes all plots
 clc; %clears the command window
 
 % read in file
-[y, Fs] = audioread('13ZZ637A.wav');
+[y, Fs] = audioread('signal.wav');
 
 % use the unvoivoi function to detect voiced and unvoiced speech segments
-voiced_parts = unvoivoi(y,0.1*Fs,0.01,0.9);
+voiced_parts = unvoivoi(y,0.1*Fs,0.005,0.95);
 
 % Multiply the result of the unvoivoi function with your speech data 
 % to set unvoiced parts to zero
