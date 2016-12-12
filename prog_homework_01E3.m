@@ -1,12 +1,13 @@
 % Speech Communication WS2016/WS2017
 % Programming Homework I
-% Sudarson Selvaraj - 0387649
-% Mikko Honkanen - 0387608
+% Sudarson Selvaraj - 387649
+% Mikko Honkanen - 387608
 
 clear variables; %deletes all variables in the workspace
 close all; %closes all plots
 clc; %clears the command window
 
+% read in file
 [y, Fs] = audioread('13ZZ637A.wav');
 
 % use the unvoivoi function to detect voiced and unvoiced speech segments
@@ -22,9 +23,11 @@ sound_length = size(y,1)/Fs;
 x = linspace(0, sound_length, size(y,1));
 figure();
 
-last_unvoiced = 1;
-first_unvoiced = 1;
+% variables for marking unvoiced segments
+last_unvoiced = 1; % sample number of last unvoiced sample in last unvoised segment
+first_unvoiced = 1; % sample number of first unvoiced sample in the last unvoised segment
 
+% unvoiced is plotted with different color as well(red)
 hold on;
 xlabel('Time in seconds');
 ylabel('Amplitude');
@@ -57,6 +60,7 @@ hold off;
 samples_in_25ms = Fs * 0.025;
 samples_in_100ms = Fs * 0.1;
 
+% space for calculating pitch contour
 peak_space = linspace(0,0.1,samples_in_100ms);
 
 % divide signal into 25ms pieces
@@ -66,16 +70,19 @@ amount_of_sliding_windows = floor(size(y)/samples_in_25ms);
 pitch_contour = zeros(amount_of_sliding_windows(1),1);
 
 % Calculating the autocorrelation of signal with window size 100ms with a shift of 25ms
-% This loop doesn't go through the last 45466 - 45201 = 265 samples at the end
+% This loop doesn't go through the last 45466 - 45201 = 265 samples at the
+% end of the sound signal.
 count = 1;
 for i = 1:samples_in_25ms : size(voiced_signal,1)
     % check window fits into remaining samples
     if (i + samples_in_100ms) <= size(voiced_signal,1)
         autocorrelated_signal = autocorrelation(voiced_signal(i:i+samples_in_100ms), samples_in_100ms);  
-        % We use the same parameters for findpeaks() as in E1
+        % We use the same parameters for findpeaks() as in E1. We found
+        % this to be optimal, although it might influence the result in a
+        % some windows.
         [peak,location] = findpeaks(autocorrelated_signal,peak_space,'MinPeakDistance',0.007);
         meanPeriod = mean(diff(location));
-        % make sure unvoiced parts are plotted as zero
+        % make sure unvoiced parts are plotted as zero (autocorrelation might return NaN)
         if isnan(meanPeriod)
            pitch_contour(count) = 0;
         else
