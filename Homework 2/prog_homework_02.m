@@ -4,6 +4,11 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %% Updated by Falk Schiffner  08.12.2016
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Sudarson Selvaraj - 387649
+% %% Mikko Honkanen - 387608
+
+
 %% Head
 clear variables; close all; clc;
 addpath src
