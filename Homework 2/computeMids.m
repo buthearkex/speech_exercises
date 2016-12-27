@@ -20,9 +20,12 @@ for i=1:size(edges)
         continue;
     end
    
-    diff = abs(freqs-edges(i))
-    [id id] = min(diff) 
-    mids(i) = freqs(id)
+    % Calculate difference between edge and frequencies
+    difference = abs(freqs-edges(i));
+    % Take the index of the smallest difference
+    [~, id] = min(difference);
+    % Set the value with the smallest difference to 
+    mids(i) = freqs(id);
     
 end
 
