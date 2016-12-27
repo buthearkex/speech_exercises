@@ -19,7 +19,7 @@ mel_freqs = linspace(mel_fmin, mel_fmax, k+2);
 %% Step 3: Transform the values into the linear frequency domain.
 
 % Set size of results array
-edges = zeros(size(mel_freqs),1);
+edges = zeros(size(mel_freqs,1),1);
 
 for i=1:size(mel_freqs)
     % TODO: correct the formula???
