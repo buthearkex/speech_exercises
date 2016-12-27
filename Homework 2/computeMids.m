@@ -8,11 +8,23 @@ function [ mids ] = computeMids( freqs, edges )
 % define the output vector mids which has the same dimensions as the vector
 % edges.
 
+% Output vector has same dimensions as vector 'edges'
 mids = zeros(size(edges));
 
-%% TODO
+%% Calculate the closest value of 'freqs' to each value in 'edges'
 
-
+for i=1:size(edges)
+    % Check if the frequency exists in the linear scale
+    if edges(i) < min(freqs) || edges(i) > max(freqs)
+        % skip the round
+        continue;
+    end
+   
+    diff = abs(freqs-edges(i))
+    [id id] = min(diff) 
+    mids(i) = freqs(id)
+    
+end
 
 %% Set defined values
 mids(1) = 1;
