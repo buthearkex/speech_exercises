@@ -1,3 +1,7 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Sudarson Selvaraj - 387649
+% %% Mikko Honkanen - 387608
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [ mids ] = computeMids( freqs, edges )
 %COMPUTEMIDS Computes the k mid-frequencies of the triangular filters
 %  The function computeMids finds the closest frequency support point in

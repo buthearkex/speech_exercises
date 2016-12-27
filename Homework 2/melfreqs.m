@@ -1,3 +1,7 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Sudarson Selvaraj - 387649
+% %% Mikko Honkanen - 387608
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [ edges ] = melfreqs( fmin, fmax, k )
 %MELFREQS Returns k+2 points in linear scale that are equally spaced on 
 % mel-scale
@@ -29,3 +33,4 @@ end
 
 end
 
+%% EOF

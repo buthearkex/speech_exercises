@@ -35,7 +35,7 @@ title(['Spectrogram of "',audiofile '"'])
 %% E1 Computation of equally spaced points on the mel-scale
 % call the function melfreqs
 % should we call this with k = 22 or k = 24 ???
-mel_to_lin_edges = melfreqs(min(freqs), max(freqs), 22);
+mel_to_lin_edges = melfreqs(min(freqs), max(freqs), 24);
 
 %% E2 Computation of the mids of the triangular filters
 % call the function computeMids
@@ -43,6 +43,7 @@ mids = computeMids(freqs, mel_to_lin_edges);
 
 %% E3 Computation of the mel-filter bank
 % call the function computeFilter
+filters = computeFilter(mids,freqs);
 
 %% E4 Computation of the mel-filtered spectrum
 % call the function melFilter
