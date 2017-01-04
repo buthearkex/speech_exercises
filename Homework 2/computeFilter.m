@@ -8,10 +8,10 @@ function [ filter ] = computeFilter( mids, freqs )
 
 %% Initialize the filter matrix
 filter = zeros(26,257);
-
+length(mids)
 %% Loop through the mid values and compute the filter value for each frequency
-for t = 1:size(mids)
-    for i = 1:size(freqs)
+for t = 1:length(mids)
+    for i = 1:length(freqs)
         % skip the first dummy filter
         if t == 1
             continue;

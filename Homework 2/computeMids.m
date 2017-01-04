@@ -17,7 +17,7 @@ mids = zeros(size(edges));
 
 %% Calculate the closest value of 'freqs' to each value in 'edges'
 
-for i=1:size(edges)
+for i=1:size(edges,2)
     % Check if the frequency exists in the linear scale
     if edges(i) < min(freqs) || edges(i) > max(freqs)
         % skip the round
