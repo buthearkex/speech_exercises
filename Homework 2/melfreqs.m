@@ -29,7 +29,7 @@ edges = zeros(size(mel_freqs,1),1);
 
 for i=1:size(mel_freqs,2)
     % TODO: correct the formula???
-    edges(i) = 700 * (10.^(mel_freqs(i)/2595));
+    edges(i) = 700 * ((10.^(mel_freqs(i)/2595))-1);
 end
 
 %disp(edges);
