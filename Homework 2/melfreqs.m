@@ -15,12 +15,12 @@ function [ edges ] = melfreqs( fmin, fmax, k )
 %% Step 1: Transform fmax and fmin value into mel-frequency domain
 mel_fmin = 2595 * log10(1+(fmin/700));
 mel_fmax = 2595 * log10(1+(fmax/700));
-disp('disp');
-disp(mel_fmin);
-disp(mel_fmax);
+
 %% Step 2: Compute a vector of equally spaced values in the mel-frequency domain ranging from the mel-fmin to the mel-fmax.
 mel_freqs = linspace(mel_fmin, mel_fmax, k+2);
-
+%disp(mel_fmin);
+%disp(mel_fmax);
+%disp(mel_freqs);
 
 %% Step 3: Transform the values into the linear frequency domain.
 
@@ -32,6 +32,7 @@ for i=1:size(mel_freqs,2)
     edges(i) = 700 * (10.^(mel_freqs(i)/2595));
 end
 
+%disp(edges);
 end
 
 %% EOF

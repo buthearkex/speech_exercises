@@ -43,11 +43,12 @@ mids = computeMids(freqs, mel_to_lin_edges);
 
 %% E3 Computation of the mel-filter bank
 % call the function computeFilter
-filters = computeFilter(mids,freqs)
+filters = computeFilter(mids,freqs);
 
 %% E4 Computation of the mel-filtered spectrum
 % call the function melFilter
 melSpec = melFilter(spec, filters);
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Plot of the mel-filtered spectrum
 figure('Name',['mel-filtered Spectrogram of "',audiofile '"'])
@@ -56,7 +57,6 @@ set(gca,'YDir', 'normal')
 xlabel('Time [s]')
 ylabel('Frequency [Hz]')
 colorbar
-title(['mel-filtered Spectrogram of "',audiofile '"'])
 
 
 %% E O F

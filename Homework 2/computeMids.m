@@ -18,17 +18,12 @@ mids = zeros(size(edges));
 %% Calculate the closest value of 'freqs' to each value in 'edges'
 
 for i=1:size(edges,2)
-    % Check if the frequency exists in the linear scale
-    if edges(i) < min(freqs) || edges(i) > max(freqs)
-        % skip the round
-        continue;
-    end
-   
+
     % Calculate difference between edge and frequencies
     difference = abs(freqs-edges(i));
     % Take the index of the smallest difference
     [~, id] = min(difference);
-    % Set the value with the smallest difference to 
+    % Set the value with the smallest difference to the result array
     mids(i) = freqs(id);
     
 end
