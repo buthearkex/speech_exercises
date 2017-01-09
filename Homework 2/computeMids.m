@@ -1,6 +1,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %% Sudarson Selvaraj - 387649
 % %% Mikko Honkanen - 387608
+% %% PROGRAMMING HOMEWORK II
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [ mids ] = computeMids( freqs, edges )
 %COMPUTEMIDS Computes the k mid-frequencies of the triangular filters
@@ -8,9 +9,6 @@ function [ mids ] = computeMids( freqs, edges )
 %  the linear frequency domain. It compares the frequency support points
 %  in the vector freqs with the edges of the triangular filter in the 
 %  vector edges.
-
-% define the output vector mids which has the same dimensions as the vector
-% edges.
 
 % Output vector has same dimensions as vector 'edges'
 mids = zeros(size(edges));
